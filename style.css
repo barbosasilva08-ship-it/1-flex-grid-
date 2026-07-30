@@ -1,96 +1,60 @@
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    color:#333;
+.container{
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows:80px 1fr 60px ;
+    grid-template-areas: 
+    "header header"
+    "menu main"
+    "footer footer" ;
 }
 
-/* cabeçalho */
-.cabecalho {
-    background: #2c3e50;
-    color:white;
-    text-align:center ;
-    padding: 2rem 1rem;
-}
-.cabecalho h1 {
-    margin-bottom: 0.5rem;
-}
-
-/* container principal */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-}
-/* A MÁGICA DO FLEXBOX Hamm Hamm Sim ou não? */
-.galeria {
-    display: flex;
-    flex-wrap:wrap;  /*quebra linha quando não coube*/
-    gap: 1.5rem; /*espaço entre os itens*/
-    justify-content: center /*centraliza os itens */
-}
-
-/* cada foto*/
-.foto-item{
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;/* corta a imagem no border-radius*/
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-
-    /* flex: grow shrink basis*/
-    flex: 1 1 300px;
-    max-width: 400px; /*não fica gigante em tela grande*/
+header{
+    grid-area: header;
+    background: #3498db;
 
 }
 
-.foto-item:hover {
-    transform: translateY(-5px);/* sobe um pouco no hover*/
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+aside{
+    grid-area: menu;
+    background: #2ecc2e;
+
 }
 
-.foto-item img{
-    width: 100%;
-    height:250px;
-    object-fit: cover;/*corta a imagem sem distorcer*/
-    display: block;
+main{
+    grid-area: main;
+    background: #ecf0f1;
 }
 
-.foto-info {
-    padding: 1rem;
-}
-.foto-info h3{
-    margin-bottom: 0.5rem;
-    color:#2c3e50;
-}
-
-.foto-info p {
-    font-size: 0.9rem;
-    color:#666;
-}
-/*rodapé*/
-.rodape{
+footer{
+    grid-area: footer;
     background: #34495e;
-    color:white;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
 }
 
-/*responsividade: ajustes pra celular*/
-@media(max-width:600px) {
-    .cabecalho h1 { 
-        font-size: 1.5rem;
-    }
-    .foto-item{
-        flex-basis: 100%;/* 1 foto por linha no celular*/
-        max-width: 100%;
-    }
+header,
+aside,
+main,
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 20px arial;
+}
+    @media (max-width:768px){
+.container{
+    grid-template-columns:1fr;
+    grid-tempate-rows: 80px 60px 1fr 60px;
+    grid-template-areas:
+    "heder"
+    "menu"
+    "main"
+    "footer",
 
 }
+    }
